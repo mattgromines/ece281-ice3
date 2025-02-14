@@ -22,3 +22,12 @@ Then it **elaborates** the entity defined by `$TB_ENTITY`
 Finally, the workflow **runs** the simulation. If successful then it will quietly exit with a `0` code.
 If any of the `assert` statements fail then GHDL will cease the simulation and exit with non-zero code; this will also cause the workflow to fail.
 Assert statements of other severity levels will be reported, but not fail the workflow.
+
+
+![Waveform of the Ripple Adder adding 10 plus 10.](waveform_ra.png)
+
+![Entity Sketch](Top_Basys_Sketch.png)
+
+## Documentation
+
+C3C Jayden Randolph assisted me in understanding how to draw an entity sketch and complete a port map with switches and leds.

@@ -32,7 +32,7 @@ begin
 	   A    => w_addends(3 downto 0),
 	   B    => w_addends(7 downto 4),
 	   Cin  => w_Cin,
-	   S    => w_sum,
+	   S    => w_sum (3 downto 0),
 	   Cout => w_Cout
 	);
 	
@@ -50,7 +50,11 @@ begin
 	       assert (w_sum = x"F" and w_Cout = '1') report "bad with ones" severity failure;
        -- TODO, a few other test cases
        w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
-	       assert (w_sum = x"0" and w_Cout = '1') report "bad with ones" severity failure;
+	       assert (w_sum = x"1" and w_Cout = '0') report "bad with carried" severity failure;
+	   w_addends <= x"42"; w_Cin <= '0'; wait for 10 ns;
+	       assert (w_sum = x"6" and w_Cout = '0') report "bad with four and two" severity failure;
+	   w_addends <= x"AA"; w_Cin <= '1'; wait for 10 ns;
+	       assert (w_sum = x"5" and w_Cout = '1') report "bad with ones" severity failure;
 	   
 		wait; -- wait forever
 	end process;	
